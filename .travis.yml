@@ -15,7 +15,7 @@ script:
 
 stages:
   - test
-  - npm-targets
+  -npm-targets
 
 jobs:
   include:
