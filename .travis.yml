@@ -19,7 +19,7 @@ stages:
 
 jobs:
   include:
-      stage: npm-targets
+    - stage: npm-targets
       name: "Test 8-jessie test"
       install: skip
       script:
