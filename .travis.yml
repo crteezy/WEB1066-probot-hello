@@ -55,7 +55,7 @@ jobs:
     - stage: npm-targets
       name: "Test 6-jessie lint"
       install: skip
-    script:
+      script:
       - docker run --rm $DOCKER_USERNAME/probot-hello:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
       env:
       - NODE_VERSION=6-jessie
