@@ -57,7 +57,7 @@ jobs:
           install: skip
           script:
           - docker run --rm $DOCKER_USERNAME/probot-hello:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
-          env:
+         env:
           - NODE_VERSION=6-jessie
           - NPM_TARGET=lint
         - stage: npm-targets
