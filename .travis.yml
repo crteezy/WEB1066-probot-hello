@@ -15,7 +15,7 @@ script:
 
 stages:
   - test
-  - nmp-targets
+  - npm-targets
 
 jobs:
   - stage: npm-targets
