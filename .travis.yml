@@ -6,16 +6,6 @@ env:
   - NODE_VERSION=8-jessie
   - NODE_VERSION=6-jessie
 
-#  - NPM_TARGET=test
-#  - NPM_TARGET=lint
-#  - NPM_TARGET=coverage
-
-# before_install:
-#   - docker pull node:8-onbuild
-#
-# install:
-#   - docker build -t probot-hello .
-
 script:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker build -t node:$NODE_VERSION --build-arg NODE_IMAGE="node:${NODE_VERSION} .
@@ -77,14 +67,3 @@ jobs:
       env:
         - NODE_VERSION=6-jessie
         - NPM_TARGET=coverage
-
-# after_success:
-#   - set -x -v;
-#     set -e;
-#     if [ "${NPM_TARGET}" = "test" ]
-#       docker tag probot-hello probot-hello:$(git rev-parse HEAD);
-#     else
-#       echo "skipping docker tag";
-#     fi;
-#     docker images;
-#     set +x +v;
