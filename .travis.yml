@@ -4,7 +4,18 @@ services:
 
 before_install:
   - docker pull node:8-onbuild
+
+install:
   - docker build -t probot-hello .
 
 script:
   - docker run --rm probot-hello npm run test
+  - docker run --rm probot-hello npm run lint
+
+deploy:
+  provider: heroku
+  api_key:
+    secure:
+      OXRX3CA1bBkjj4kXq8Oyz2cl6ARzCNMLv8ZUmspWastEaQzY2W4ruFWBhcETEa+n+TDbMpFORINv0csawsDr9gMTR0crzUA956DEWDI8JRya/Llw7BOw4sw7qQn0N8CuP+UMDyWQETuCLZEKfdLPhe2kOOCGqklDPHPD1jVK3k4M7cVw5pOkvAeh05p3e4IXPa68ooeL14oWlFLD8FOfZE6okBs3lLWmS6NSzX2V60bzJpEEAiJEKtLomi7CcOWdBrliy+ms7Aq2zZr7lVoiGrXaGcFcvXdCfqpSPf3Qn0gcxQbIScDRHiRDEwa+ZacaUt1mDvwBOPZr9lHJwkYq2V7jQx4XtRaxR4L27taL8Ck59C/qIIuslYu7DJihIoeRSmlFMJCsLTV/fhChSTmbvekaEceu0URSltpTbZfpghLvw7fXP4lFUr1OhQxAaBQsU2ng1tuv8JS1N7S04m33EDcugb76UGJ8/gcg4Mc5mDhZIss07bLq8jDm3XK6RAvnlEz9IhY8Vpj4Xb6ILh6sJ4L40sgSWUuEpNKkSifs4pQ05hLglx/M1eWST+d6X8mnsd3baKCNmKLq2mPh7zj85DjD22I1EyN7Fuxo8oxbJKcgPbXJ5bFN3SkyMCqj9PsOfb0WUA8DO1/N7RGpuw/PSAaX7qZ9HrHZBqdWrsxn85U=
+  on: heroku_production
+  app: probot-crteezy
